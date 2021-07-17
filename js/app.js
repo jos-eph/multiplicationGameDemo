@@ -104,13 +104,13 @@ function displayProblem(){
     currentProblem.innerText = problem.number;
 }
 
-function getRandomNumberNotInArrayOrSpecificInt(max,specificInt,array)
+function getRandomNumberNotInArray(max,array)
 {
     let newNumber = -1;
     if (max < array.length) { return newNumber; } // prevent an infinite loop
     
 
-    while (newNumber==-1||newNumber==specificInt||array.includes(newNumber))
+    while (newNumber==-1||array.includes(newNumber))
     { newNumber = getRandomNumber(max); }
 
     return newNumber;
@@ -126,8 +126,7 @@ function displayAnswerChoices() {
     for (i = 0; i < answerChoiceArray.length; i++)
     {
         if (i == correctAnswerPosition) { continue; }
-        answerChoiceArray[i] = getRandomNumberNotInArrayOrSpecificInt(operandSquared,
-            problem.correctAnswer,answerChoiceArray);
+        answerChoiceArray[i] = getRandomNumberNotInArray(operandSquared,answerChoiceArray);
     }
 
     for (i = 0; i < NUMBER_OF_ANSWER_CHOICES; i++)
